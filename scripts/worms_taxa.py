@@ -32,7 +32,7 @@ def get_target_rank(records, target_name):
     for record in records:
         scientificname = str(record.get("scientificname") or "").lower()
         status = record.get("status")
-        if scientificname == target_name and status in {"accepted", "alternative representation"}:
+        if scientificname == target_name and status in {"accepted", "unaccepted", "alternative representation"}:
             return record.get("rank")
     return None
 
@@ -46,7 +46,7 @@ for i in df_observations['scientific_name']:
         if target_rank:
             filtered_records = [
                 record for record in result
-                if record.get("status") in {"accepted", "alternative representation"}
+                if record.get("status") in {"accepted", "unaccepted","alternative representation"}
                 and record.get("rank") == target_rank
                 and str(record.get("scientificname") or "").lower() == query_name.lower()
             ]
