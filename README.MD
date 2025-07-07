@@ -41,6 +41,10 @@ A sample data file is included to test the script. It consists of a single row w
 ## Take in mind
 * This script is not as efficient as it could be. Going through hundreds of entries can take minutes. For about ~430 taxa, it has taken about 7 minutes. Higher taxonomic ranks like orders and families take longer to process. 
 
+* Some names can return errors like *Holothuria thomasi*, as its accepted name includes the subgenus: *Holothuria (Thymiosycia) thomasi*. After running the script, you will see a list of errors in the console. Look up those names in WoRMS to make sure you are not missing anything. 
+
+* There are names that have changes, like *Chromis atrilobata* now being placed in the *Azurina* genus. The output will have a column named **valid_name** in which you will see the accepted *Azurina atrilobata*. I suggest using this field for any following analytics. 
+
 * Heading and trailing blank spaces can produce errors. Make sure you are adding a word (Echinometridae) or the scientific name correctly (*Arbacia stellata*). As an example, I am adding underscores to where there should not be any blank spaces:
     * *Arbacia__stellata*
     * *Arbacia stellata_*
